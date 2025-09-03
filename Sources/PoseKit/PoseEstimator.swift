@@ -12,6 +12,16 @@ public struct Pose: Sendable {
     public init(joints: [Joint.Name : Joint]) {
         self.joints = joints
     }
+    
+    public static var boneConnections: [(Joint.Name, Joint.Name)] {
+           [
+               (.leftShoulder, .rightShoulder), (.leftShoulder, .leftHip),
+               (.rightShoulder, .rightHip), (.leftHip, .rightHip),
+               (.leftHip, .leftKnee), (.leftKnee, .leftAnkle),
+               (.rightHip, .rightKnee), (.rightKnee, .rightAnkle)
+           ]
+       }
+    
 }
 
 /// Represents a single joint with its position and the model's confidence in its detection.
